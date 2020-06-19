@@ -30,8 +30,6 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+export * from "./ContentType";
+export * from "./Errors";
 export * from "./MediaType";
-export * from "./isMediaTypeData";
-export * from "./makeMediaType";
-export * from "./mustBeMediaTypeData";
-export * from "./validateMediaTypeData";

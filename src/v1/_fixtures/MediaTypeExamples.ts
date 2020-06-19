@@ -34,8 +34,8 @@
 import { MediaTypeParts } from "../MediaType";
 
 export type MediaTypeExample = {
-    input: string,
-    expected: MediaTypeParts
+    inputValue: string,
+    expectedValue: MediaTypeParts
 };
 
 export interface ContentTypeExamples {
@@ -44,15 +44,15 @@ export interface ContentTypeExamples {
 
 export const ValidMediaTypeExamples: MediaTypeExample[] = [
     {
-        input: "text/plain",
-        expected: {
+        inputValue: "text/plain",
+        expectedValue: {
             type: "text",
             subtype: "plain",
         }
     },
     {
-        input: "text/plain; charset=us-ascii",
-        expected: {
+        inputValue: "text/plain; charset=us-ascii",
+        expectedValue: {
             type: "text",
             subtype: "plain",
             parameters: {
@@ -61,8 +61,8 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
         }
     },
     {
-        input: 'text/plain; charset="us-ascii"',
-        expected: {
+        inputValue: 'text/plain; charset="us-ascii"',
+        expectedValue: {
             type: "text",
             subtype: "plain",
             parameters: {
@@ -71,8 +71,8 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
         },
     },
     {
-        input: "text/plain; charset=ISO-8859-1",
-        expected: {
+        inputValue: "text/plain; charset=ISO-8859-1",
+        expectedValue: {
             type: "text",
             subtype: "plain",
             parameters: {
@@ -81,24 +81,24 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
         },
     },
     {
-        input: "application/vnd.record",
-        expected: {
+        inputValue: "application/vnd.record",
+        expectedValue: {
             type: "application",
             tree: "vnd",
             subtype: "record",
         },
     },
     {
-        input: "application/vnd.tie-record",
-        expected: {
+        inputValue: "application/vnd.tie-record",
+        expectedValue: {
             type: "application",
             tree: "vnd",
             subtype: "tie-record",
         },
     },
     {
-        input: "application/vnd.tie-record+json",
-        expected: {
+        inputValue: "application/vnd.tie-record+json",
+        expectedValue: {
             type: "application",
             tree: "vnd",
             subtype: "tie-record",
@@ -106,8 +106,8 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
         },
     },
     {
-        input: "application/vnd.oai.openapi+json",
-        expected: {
+        inputValue: "application/vnd.oai.openapi+json",
+        expectedValue: {
             type: "application",
             tree: "vnd",
             subtype: "oai.openapi",
@@ -115,8 +115,8 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
         }
     },
     {
-        input: "application/vnd.oai.openapi+json; version=3.0",
-        expected: {
+        inputValue: "application/vnd.oai.openapi+json; version=3.0",
+        expectedValue: {
             type: "application",
             tree: "vnd",
             subtype: "oai.openapi",

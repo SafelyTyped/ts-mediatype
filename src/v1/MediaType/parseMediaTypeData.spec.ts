@@ -45,8 +45,7 @@ describe("parseMediaTypeData()", () => {
     describe("it correctly parses legal media types", () => {
         ValidMediaTypeExamples.forEach((example) => {
             // shorthand
-            const inputValue = example.input;
-            const expectedValue = example.expected;
+            const { inputValue, expectedValue } = example;
 
             it("correctly parses '" + inputValue + '"', () => {
                 const actualValue = parseMediaTypeData(inputValue);

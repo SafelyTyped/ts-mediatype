@@ -34,6 +34,7 @@ import { AppErrorOr, DataPath } from "@safelytyped/core-types";
 
 import { ContentType } from "./ContentType";
 import { InvalidContentTypeError } from "../Errors";
+import { ContentTypeMatchRegex } from "../MediaType";
 
 /**
  * `validateContentTypeData()` is a {@link DataValidator}. Use it to
@@ -57,7 +58,7 @@ export function validateContentTypeData (
     // add your validation code in here
     //
     // this is an example for you to replace ...
-    if (!ContentTypeRegex.test(input)) {
+    if (!ContentTypeMatchRegex.test(input)) {
         return new InvalidContentTypeError({
             public: {
                 dataPath: path,

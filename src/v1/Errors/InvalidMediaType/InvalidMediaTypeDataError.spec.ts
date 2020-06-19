@@ -42,7 +42,7 @@ describe("InvalidMediaTypeDataError", () => {
             const unit = new InvalidMediaTypeDataError({
                 public: {
                     dataPath: DEFAULT_DATA_PATH,
-                    input: 600,
+                    input: "THIS IS A TEST!!",
                 },
             });
 

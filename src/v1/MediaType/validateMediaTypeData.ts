@@ -33,6 +33,7 @@
 import { AppErrorOr, DataPath } from "@safelytyped/core-types";
 
 import { InvalidMediaTypeDataError } from "../Errors";
+import { MediaTypeMatchRegex } from "./regexes";
 
 /**
  * `validateMediaTypeData()` is a {@link DataValidator}. Use it to
@@ -56,7 +57,7 @@ export function validateMediaTypeData (
     // add your validation code in here
     //
     // this is an example for you to replace ...
-    if (!MediaTypeRegex.test(input)) {
+    if (!MediaTypeMatchRegex.test(input)) {
         return new InvalidMediaTypeDataError({
             public: {
                 dataPath: path,

@@ -42,7 +42,7 @@ describe("InvalidContentTypeError", () => {
             const unit = new InvalidContentTypeError({
                 public: {
                     dataPath: DEFAULT_DATA_PATH,
-                    input: 600,
+                    input: "THIS IS A TEST",
                 },
             });
 

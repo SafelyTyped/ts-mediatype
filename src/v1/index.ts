@@ -33,3 +33,6 @@
 export * from "./ContentType";
 export * from "./Errors";
 export * from "./MediaType";
+export * from "./MediaTypeData";
+export * from "./MediaTypeParts";
+export * from "./OptionTypes";

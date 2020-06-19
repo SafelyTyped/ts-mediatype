@@ -35,6 +35,7 @@ The following changes have been completed, and will be included in the next tagg
 * MediaTypeData
   - added isMediaTypeData()
   - added makeMediaTypeDataFromMediaTypeParts()
+  - added mustBeMediaTypeData()
   - added parseMediaTypeData()
 * MediaTypeParts
   - added MediaTypeParts

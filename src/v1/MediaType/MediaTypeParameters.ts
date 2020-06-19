@@ -32,43 +32,12 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { MediaTypeParameters } from "./MediaTypeParameters";
+import { HashMap } from "@safelytyped/core-types";
 
 /**
- * `MediaTypeParts` is the structure of a {@link MediaType}
- *
- * call {@link parseMediaType} or {@link MediaType.parse} to get your
- * {@link MediaType} broken down
+ * `MediaTypeParameters` holds a list of RFC-2045 attribute / value
+ * pairs.
  *
  * @category MediaType
  */
-export interface MediaTypeParts {
-    /**
-     * the 'text' in 'text/html' - everything before the first '/'
-     */
-    type: string;
-
-    /**
-     * the 'vnd' in 'application/vnd.ms-excel' - everything after
-     * the first '/' and before the first '.'
-     */
-    tree?: string;
-
-    /**
-     * the 'html' in 'text/html',
-     * or the 'ms-excel' in 'application/vnd.ms-excel'
-     *
-     * - everything after the 'type' and the 'tree'
-     */
-    subtype: string;
-
-    /**
-     * the 'json' in 'application/vnd.ms-excel+json'
-     */
-    suffix?: string;
-
-    /**
-     * any parameters tacked onto the end of the media type
-     */
-    parameters?: MediaTypeParameters;
-}
+export type MediaTypeParameters = HashMap<string>;

@@ -29,6 +29,7 @@ The following changes have been completed, and will be included in the next tagg
   - added MediaTypeRegexIsBrokenError
 * MediaType
   - added MediaTypeParts
+  - added MediaTypeParameters
   - added parseMediaTypeData()
 
 ### Fixes

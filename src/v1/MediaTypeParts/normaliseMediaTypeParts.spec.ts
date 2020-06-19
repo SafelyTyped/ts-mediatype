@@ -29,10 +29,38 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { expect } from "chai";
+import { describe } from "mocha";
 
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./FormatMediaTypePartsRuleset";
-export * from "./Rulesets/MediaTypePartsToLowerCaseRuleset";
-export * from "./formatMediaTypeParts";
-export * from "./normaliseMediaTypeParts";
+import { makeMediaTypeDataFromMediaTypeParts, parseMediaTypeData } from "../MediaTypeData";
+import { normaliseMediaTypeParts } from "./normaliseMediaTypeParts";
+
+
+describe("normaliseMediaTypeParts()", () => {
+    describe("it converts everything but parameter values to lower case", () => {
+        [
+            {
+                description: "normalises to lower case when no optional fields",
+                inputValue: "TEXT/HTML",
+                expectedValue: "text/html",
+            },
+            {
+                description: "normalises to lower case when there are optional fields",
+                inputValue: "APPLICATION/VND.EXAMPLE+YAML; VERSION=3.0; SOURCE=\"application/JSON\"",
+                expectedValue: "application/vnd.example+yaml; version=3.0; source=\"application/JSON\"",
+            }
+        ].forEach((ruleset) => {
+            const { expectedValue, description } = ruleset;
+            it(description, () => {
+                // we work with strings just because it's easier
+                // to setup the test data
+                const inputValue = parseMediaTypeData(ruleset.inputValue);
+                const actualValue = makeMediaTypeDataFromMediaTypeParts(
+                    normaliseMediaTypeParts(inputValue)
+                );
+
+                expect(actualValue).to.equal(expectedValue);
+            });
+        });
+    });
+});

@@ -29,10 +29,20 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { formatMediaTypeParts } from "./formatMediaTypeParts";
+import { MediaTypeParts } from "./MediaTypeParts";
+import { MediaTypePartsToLowerCaseRuleset } from "./Rulesets/MediaTypePartsToLowerCaseRuleset";
 
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./FormatMediaTypePartsRuleset";
-export * from "./Rulesets/MediaTypePartsToLowerCaseRuleset";
-export * from "./formatMediaTypeParts";
-export * from "./normaliseMediaTypeParts";
+/**
+ * `normaliseMediaTypeParts()` is a data guard.
+ *
+ * @category MediaType
+ * @param input
+ * The input data to validate.
+ * @returns
+ * - `true` if `input` can be used to make a new {@link MediaType}
+ * - `false` otherwise.
+ */
+export const normaliseMediaTypeParts= (
+    input: MediaTypeParts
+): MediaTypeParts => formatMediaTypeParts(input, MediaTypePartsToLowerCaseRuleset);

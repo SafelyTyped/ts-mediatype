@@ -29,7 +29,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-import { FormatMediaTypePartsRuleset } from "../FormatMediaTypePartsRules";
+import { FormatMediaTypePartsRuleset } from "../FormatMediaTypePartsRuleset";
 
 /**
  * `MediaTypePartsToLowerCaseRuleset` is a set of formatting rules for

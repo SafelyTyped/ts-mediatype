@@ -27,12 +27,16 @@ The following changes have been completed, and will be included in the next tagg
 
 * Errors
   - added MediaTypeRegexIsBrokenError
-* MediaType
-  - added MediaTypeParts
-  - added MediaTypeParameters
+* MediaTypeData
   - added makeMediaTypeDataFromMediaTypeParts()
   - added parseMediaTypeData()
-
+* MediaTypeParts
+  - added MediaTypeParts
+  - added MediaTypeParameters
+  - added FormatMediaTypePartsRuleset
+  - added formatMediaTypeParts()
+  - added MediaTypePartsToLowerCase ruleset
+  
 ### Fixes
 
 ### Dependencies

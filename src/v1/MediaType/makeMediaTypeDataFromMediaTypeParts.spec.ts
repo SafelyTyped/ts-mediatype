@@ -33,10 +33,10 @@ import { expect } from "chai";
 import { describe } from "mocha";
 
 import { ValidMediaTypeExamples } from "../_fixtures/MediaTypeExamples";
-import { formatMediaTypeParts } from "./formatMediaTypeParts";
+import { makeMediaTypeDataFromMediaTypeParts } from "./makeMediaTypeDataFromMediaTypeParts";
 import { isMediaTypeData } from "./isMediaTypeData";
 
-describe("formatMediaTypeParts()", () => {
+describe("makeMediaTypeDataFromMediaTypeParts()", () => {
     describe("it converts MediaTypeParts back into a string", () => {
         ValidMediaTypeExamples.forEach((example) => {
             // shorthand
@@ -47,7 +47,7 @@ describe("formatMediaTypeParts()", () => {
             const inputValue = example.expectedValue;
 
             it("correctly converts parts to '" + expectedValue + "'", () => {
-                const actualValue = formatMediaTypeParts(inputValue);
+                const actualValue = makeMediaTypeDataFromMediaTypeParts(inputValue);
                 expect(actualValue).to.eql(expectedValue);
 
                 // prove that the resulting string is valid

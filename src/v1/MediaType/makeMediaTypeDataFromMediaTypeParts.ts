@@ -32,7 +32,6 @@
 import { MediaTypeParts } from "./MediaTypeParts";
 import { MediaTypeParamNeedsQuotingRegex } from "./regexes";
 
-
 /**
  * `formatMediaTypeParts()` converts {@link MediaTypeParts} into a
  * RFC-compliant string.
@@ -43,7 +42,7 @@ import { MediaTypeParamNeedsQuotingRegex } from "./regexes";
  * @returns
  * The RFC-compliant string.
  */
-export function formatMediaTypeParts(
+export function makeMediaTypeDataFromMediaTypeParts(
     input: MediaTypeParts
 ): string {
     let retval = input.type + "/";

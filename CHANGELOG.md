@@ -28,6 +28,7 @@ The following changes have been completed, and will be included in the next tagg
 * ContentType
   - added isContentTypeData()
   - added makeContentType()
+  - added mustBeContentTypeData()
   - added validateContentTypeData()
 * Errors
   - added MediaTypeRegexIsBrokenError

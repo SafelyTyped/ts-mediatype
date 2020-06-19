@@ -29,15 +29,17 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-
 import {
     applyFunctionalOptions,
     FunctionalOption,
+    OnError,
     OnErrorOptions,
-    SmartConstructor,
     THROW_THE_ERROR,
 } from "@safelytyped/core-types";
 
+import { makeMediaTypeDataFromMediaTypeParts, parseMediaTypeData } from "../MediaTypeData";
+import { MediaTypeParts } from "../MediaTypeParts";
+import { MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS } from "./defaults/MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS";
 import { MediaType } from "./MediaType";
 
 /**
@@ -45,24 +47,49 @@ import { MediaType } from "./MediaType";
  * `input` contains valid MediaType data, by calling
  * {@link mustBeMediaTypeData}.
  *
+ * If there are no user-supplied functional options, we apply
+ * {@link MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS}. You'll probably want to pass
+ * these in, if you supply your own functional options.
+ *
  * @category MediaType
  * @param input
  * This is the data we'll use to create the new MediaType
  * @param onError
  * If `input` fails validation, we'll pass an {@link AppError} to this.
+ * @param defaultFnOpts
+ * If `fnOpts` is empty, we use these instead.
  * @param fnOpts
  * These are user-supplied functional options.
  * @returns
  * The new MediaType object.
  */
-export const makeMediaType: SmartConstructor<string, MediaType, OnErrorOptions, MediaType> = (
+export const makeMediaType = (
     input: string,
     {
-        onError = THROW_THE_ERROR
-    }: Partial<OnErrorOptions> = {},
-    ...fnOpts: FunctionalOption<MediaType, OnErrorOptions>[]
-): MediaType => applyFunctionalOptions(
-    new MediaType(input, { onError }),
-    { onError },
-    ...fnOpts
-);
+        onError = THROW_THE_ERROR,
+        defaultFnOpts = MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS
+    }: {
+        onError?: OnError,
+        defaultFnOpts?: FunctionalOption<MediaTypeParts, OnErrorOptions>[]
+    } = {},
+    ...fnOpts: FunctionalOption<MediaTypeParts, OnErrorOptions>[]
+): MediaType => {
+    // special case - apply the default functional options
+    if (fnOpts.length === 0) {
+        fnOpts = defaultFnOpts;
+    }
+
+    // doing it this way avoids constant re-parsing of the input strings!
+    const parts = applyFunctionalOptions(
+        parseMediaTypeData(input, { onError }),
+        { onError },
+        ...fnOpts
+    );
+
+    // we need to turn this into something our MediaType class
+    // will accept
+    const finalInput = makeMediaTypeDataFromMediaTypeParts(parts);
+
+    // all done (we hope!)
+    return new MediaType(finalInput, { onError });
+};

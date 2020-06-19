@@ -27,6 +27,11 @@ The following changes have been completed, and will be included in the next tagg
 
 * Errors
   - added MediaTypeRegexIsBrokenError
+* MediaType
+  - added makeMediaType()
+  - added MakeMediaTypeOptions
+  - added MAKE_MEDIA_TYPE_DEFAULT_OPTIONS
+  - added MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS
 * MediaTypeData
   - added makeMediaTypeDataFromMediaTypeParts()
   - added parseMediaTypeData()

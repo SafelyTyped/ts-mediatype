@@ -29,7 +29,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-import { FormatMediaTypePartsRules, FormatMediaTypePartsRuleset } from "./FormatMediaTypePartsRules";
+import { FormatMediaTypePartsRules, FormatMediaTypePartsRuleset } from "./FormatMediaTypePartsRuleset";
 import { MediaTypeParameters } from "./MediaTypeParameters";
 import { MediaTypeParts } from "./MediaTypeParts";
 

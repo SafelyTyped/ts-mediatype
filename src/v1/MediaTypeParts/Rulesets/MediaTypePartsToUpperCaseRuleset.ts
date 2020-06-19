@@ -29,11 +29,25 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { FormatMediaTypePartsRuleset } from "../FormatMediaTypePartsRuleset";
 
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./FormatMediaTypePartsRuleset";
-export * from "./Rulesets/MediaTypePartsToLowerCaseRuleset";
-export * from "./Rulesets/MediaTypePartsToUpperCaseRuleset";
-export * from "./formatMediaTypeParts";
-export * from "./normaliseMediaTypeParts";
+/**
+ * `MediaTypePartsToUpperCaseRuleset` is a set of formatting rules for
+ * {@link formatMediaTypeParts}.
+ *
+ * These rules will convert the {@link MediaTypePart} to upper-case,
+ * while leaving parameter values unchanged.
+ *
+ * @category MediaTypeParts
+ */
+export const MediaTypePartsToUpperCaseRuleset: FormatMediaTypePartsRuleset = {
+    description: "normalise to upper-case",
+
+    rules: {
+        // most fields need to become upper case
+        default: (x) => x.toUpperCase(),
+
+        // leave parameter values alone!
+        parameterValue: (x) => x
+    }
+};

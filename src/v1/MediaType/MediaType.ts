@@ -37,6 +37,8 @@ import {
 } from "@safelytyped/core-types";
 
 import { mustBeMediaTypeData } from "../MediaTypeData";
+import { MediaTypeParts } from "../MediaTypeParts";
+import { parseMediaTypeData } from "../MediaTypeData";
 
 /**
  * `MediaType` is a safe type.
@@ -44,6 +46,12 @@ import { mustBeMediaTypeData } from "../MediaTypeData";
  * @category MediaType
  */
 export class MediaType extends RefinedString {
+    /**
+     * `#parsed` is an internal cache. It stops us having to parse our value
+     * more than once.
+     */
+    #parsed: MediaTypeParts|undefined = undefined;
+
     /**
      * `Constructor` creates a new `MediaType`.
      *
@@ -60,5 +68,20 @@ export class MediaType extends RefinedString {
         }: Partial<OnErrorOptions> = {}
     ) {
         super(mustBeMediaTypeData, input, { onError });
+    }
+
+    /**
+     * `parse()` returns a breakdown of the individual components for
+     * this media type.
+     */
+    public parse(): MediaTypeParts {
+        // haven't we already done this?
+        if (!this.#parsed) {
+            // no, first time for everything!
+            this.#parsed = parseMediaTypeData(this._value);
+        }
+
+        // return our cached value
+        return this.#parsed;
     }
 }

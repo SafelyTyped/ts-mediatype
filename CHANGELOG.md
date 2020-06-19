@@ -28,6 +28,7 @@ The following changes have been completed, and will be included in the next tagg
 * Errors
   - added MediaTypeRegexIsBrokenError
 * MediaType
+  - added MediaType()
   - added makeMediaType()
   - added MakeMediaTypeOptions
   - added MAKE_MEDIA_TYPE_DEFAULT_OPTIONS
@@ -37,6 +38,7 @@ The following changes have been completed, and will be included in the next tagg
   - added makeMediaTypeDataFromMediaTypeParts()
   - added mustBeMediaTypeData()
   - added parseMediaTypeData()
+  - added validateMediaTypeData()
 * MediaTypeParts
   - added MediaTypeParts
   - added MediaTypeParameters

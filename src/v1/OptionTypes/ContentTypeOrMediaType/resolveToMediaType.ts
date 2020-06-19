@@ -31,7 +31,19 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { MediaType } from "../../MediaType";
+import { ContentTypeOrMediaType } from "./ContentTypeOrMediaType";
 
-export * from "./ContentTypeOrMediaType";
-export * from "./resolveToContentType";
-export * from "./resolveToMediaType";
+/**
+ * `resolveToMediaType` will convert the option type
+ * {@link ContentTypeOrMediaType} into a {@link MediaType}.
+ *
+ * @category OptionTypes
+ */
+export function resolveToMediaType(input: ContentTypeOrMediaType): MediaType {
+    if (input instanceof MediaType) {
+        return input;
+    }
+
+    return new MediaType(input);
+}

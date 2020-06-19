@@ -31,7 +31,29 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { expect } from "chai";
+import { describe } from "mocha";
 
-export * from "./ContentTypeOrMediaType";
-export * from "./resolveToContentType";
-export * from "./resolveToMediaType";
+import { makeContentType } from "../../ContentType";
+import { MediaType } from "../../MediaType";
+import { resolveToMediaType } from "./resolveToMediaType";
+
+describe("resolveToMediaType()", () => {
+    it("converts a ContentType to a MediaType", () => {
+        const inputValue = makeContentType("text/html");
+        const expectedValue = new MediaType("text/html");
+
+        const actualValue = resolveToMediaType(inputValue);
+
+        expect(actualValue).to.eql(expectedValue);
+    });
+
+    it("returns a given MediaType", () => {
+        const inputValue = new MediaType("text/html");
+        const expectedValue = inputValue;
+
+        const actualValue = resolveToMediaType(inputValue);
+
+        expect(actualValue).to.equal(expectedValue);
+    })
+});

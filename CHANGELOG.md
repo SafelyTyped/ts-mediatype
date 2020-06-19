@@ -55,6 +55,7 @@ The following changes have been completed, and will be included in the next tagg
 * OptionTypes
   - added ContentTypeOrMediaType
   - added resolveToContentType()
+  - added resolveToMediaType()
   
 ### Fixes
 

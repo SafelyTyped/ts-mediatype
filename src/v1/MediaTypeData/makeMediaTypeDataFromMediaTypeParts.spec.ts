@@ -35,6 +35,12 @@ import { describe } from "mocha";
 import { ValidMediaTypeExamples } from "../_fixtures/MediaTypeExamples";
 import { makeMediaTypeDataFromMediaTypeParts } from "./makeMediaTypeDataFromMediaTypeParts";
 import { isMediaTypeData } from "./isMediaTypeData";
+import { MediaTypeParts } from "../MediaTypeParts";
+
+interface FailExample {
+    inputValue: MediaTypeParts;
+    expectedValue: string;
+}
 
 describe("makeMediaTypeDataFromMediaTypeParts()", () => {
     describe("it converts MediaTypeParts back into a string", () => {
@@ -52,6 +58,35 @@ describe("makeMediaTypeDataFromMediaTypeParts()", () => {
 
                 // prove that the resulting string is valid
                 expect(isMediaTypeData(actualValue)).to.equal(true);
+            })
+        });
+    });
+
+    describe("it fail predictably when we get broken MediaTypeParts", () => {
+        const examples: FailExample[] = [
+            {
+                inputValue: {
+                    type: "",
+                    subtype: "",
+                },
+                expectedValue: "",
+            },
+            {
+                inputValue: {
+                    type: "",
+                    subtype: "",
+                    suffix: "",
+                },
+                expectedValue: ""
+            }
+        ];
+
+        examples.forEach((example: FailExample) => {
+            const { inputValue, expectedValue } = example;
+
+            it("fails gracefully for '" + JSON.stringify(inputValue) + "'", () => {
+                const actualValue = makeMediaTypeDataFromMediaTypeParts(inputValue);
+                expect(actualValue).to.eql(expectedValue);
             })
         });
     });

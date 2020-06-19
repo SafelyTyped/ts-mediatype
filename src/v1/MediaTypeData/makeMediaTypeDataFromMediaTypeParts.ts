@@ -45,24 +45,26 @@ import { MediaTypeParamNeedsQuotingRegex } from "./regexes";
 export function makeMediaTypeDataFromMediaTypeParts(
     input: MediaTypeParts
 ): string {
-    let retval = input.type + "/";
+    let retval = "";
+    if (input.type.length > 0) {
+        retval = retval + input.type + "/";
+    }
     if (input.tree) {
         retval = retval + input.tree + '.';
     }
     retval = retval + input.subtype;
-    if (input.suffix) {
+    if (input.suffix && input.suffix.length > 0) {
         retval = retval + "+" + input.suffix;
     }
 
     if (input.parameters) {
-        retval = retval + "; ";
-
         const paramsList = [];
 
         // tslint:disable-next-line: forin
         for(const paramKey in input.parameters) {
             // shorthand
             const paramValue = input.parameters[paramKey];
+
             let delimiter = '';
             if (MediaTypeParamNeedsQuotingRegex.test(paramValue)) {
                 delimiter = '"';
@@ -70,7 +72,9 @@ export function makeMediaTypeDataFromMediaTypeParts(
             paramsList.push(paramKey + "=" + delimiter + input.parameters[paramKey] + delimiter);
         }
 
-        retval = retval + paramsList.join("; ");
+        if (paramsList.length > 0) {
+            retval = retval + "; " + paramsList.join("; ");
+        }
     }
 
     return retval;

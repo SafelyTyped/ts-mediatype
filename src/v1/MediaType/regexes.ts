@@ -44,3 +44,5 @@ export const MediaTypeMatchRegex = /^(?<contentType>(?<type>[A-Za-z0-9][-\w!#$&^
 
 // tslint:disable-next-line: max-line-length
 export const MediaTypeParamRegex = /(;[\s]+((?<parameterName>[\w\d]+)=((?<parameterValueA>[^+()<>@,;:\\/"[\]?=+]+)|"(?<parameterValueB>[^"]*)")))/g;
+
+export const MediaTypeParamNeedsQuotingRegex = /[+()<>@,;:\\/"[\]?=+]/;

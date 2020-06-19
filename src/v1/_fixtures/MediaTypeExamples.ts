@@ -35,6 +35,7 @@ import { MediaTypeParts } from "../MediaType";
 
 export type MediaTypeExample = {
     inputValue: string,
+    formatValue?: string,
     expectedValue: MediaTypeParts
 };
 
@@ -62,6 +63,7 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
     },
     {
         inputValue: 'text/plain; charset="us-ascii"',
+        formatValue: "text/plain; charset=us-ascii",
         expectedValue: {
             type: "text",
             subtype: "plain",
@@ -123,6 +125,19 @@ export const ValidMediaTypeExamples: MediaTypeExample[] = [
             suffix: "json",
             parameters: {
                 version: "3.0",
+            }
+        }
+    },
+    {
+        inputValue: "application/vnd.example+yaml; version=3.0; source=\"application/json\"",
+        expectedValue: {
+            type: "application",
+            tree: "vnd",
+            subtype: "example",
+            suffix: "yaml",
+            parameters: {
+                version: "3.0",
+                source: "application/json"
             }
         }
     }

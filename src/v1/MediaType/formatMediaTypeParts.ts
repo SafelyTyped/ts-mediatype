@@ -29,14 +29,50 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { MediaTypeParts } from "./MediaTypeParts";
+import { MediaTypeParamNeedsQuotingRegex } from "./regexes";
 
-export * from "./MediaType";
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./formatMediaTypeParts";
-export * from "./isMediaTypeData";
-export * from "./makeMediaType";
-export * from "./mustBeMediaTypeData";
-export * from "./parseMediaTypeData";
-export * from "./validateMediaTypeData";
-export * from "./regexes";
+
+/**
+ * `formatMediaTypeParts()` converts {@link MediaTypeParts} into a
+ * RFC-compliant string.
+ *
+ * @category MediaType
+ * @param input
+ * The input data to convert.
+ * @returns
+ * The RFC-compliant string.
+ */
+export function formatMediaTypeParts(
+    input: MediaTypeParts
+): string {
+    let retval = input.type + "/";
+    if (input.tree) {
+        retval = retval + input.tree + '.';
+    }
+    retval = retval + input.subtype;
+    if (input.suffix) {
+        retval = retval + "+" + input.suffix;
+    }
+
+    if (input.parameters) {
+        retval = retval + "; ";
+
+        const paramsList = [];
+
+        // tslint:disable-next-line: forin
+        for(const paramKey in input.parameters) {
+            // shorthand
+            const paramValue = input.parameters[paramKey];
+            let delimiter = '';
+            if (MediaTypeParamNeedsQuotingRegex.test(paramValue)) {
+                delimiter = '"';
+            }
+            paramsList.push(paramKey + "=" + delimiter + input.parameters[paramKey] + delimiter);
+        }
+
+        retval = retval + paramsList.join("; ");
+    }
+
+    return retval;
+}

@@ -30,6 +30,7 @@ The following changes have been completed, and will be included in the next tagg
 * MediaType
   - added MediaTypeParts
   - added MediaTypeParameters
+  - added formatMediaTypeParts()
   - added parseMediaTypeData()
 
 ### Fixes

@@ -29,14 +29,30 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { expect } from "chai";
+import { describe } from "mocha";
 
-export * from "./MediaType";
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./formatMediaTypeParts";
-export * from "./isMediaTypeData";
-export * from "./makeMediaType";
-export * from "./mustBeMediaTypeData";
-export * from "./parseMediaTypeData";
-export * from "./validateMediaTypeData";
-export * from "./regexes";
+import { ValidMediaTypeExamples } from "../_fixtures/MediaTypeExamples";
+import { formatMediaTypeParts } from "./formatMediaTypeParts";
+import { isMediaTypeData } from "./isMediaTypeData";
+
+describe("formatMediaTypeParts()", () => {
+    describe("it converts MediaTypeParts back into a string", () => {
+        ValidMediaTypeExamples.forEach((example) => {
+            // shorthand
+            //
+            // these are backwards, because our fixtures assume conversion
+            // TO a MediaType, and we are converting FROM a MediaType
+            const expectedValue = example.formatValue ?? example.inputValue;
+            const inputValue = example.expectedValue;
+
+            it("correctly converts parts to '" + expectedValue + "'", () => {
+                const actualValue = formatMediaTypeParts(inputValue);
+                expect(actualValue).to.eql(expectedValue);
+
+                // prove that the resulting string is valid
+                expect(isMediaTypeData(actualValue)).to.equal(true);
+            })
+        });
+    });
+});

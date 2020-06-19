@@ -29,12 +29,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-
 import { AppErrorOr, DataPath } from "@safelytyped/core-types";
 
-import { ContentType } from "./ContentType";
 import { InvalidContentTypeError } from "../Errors";
-import { ContentTypeMatchRegex } from "../MediaType";
+import { ContentTypeMatchRegex } from "../MediaTypeData";
+import { ContentType } from "./ContentType";
 
 /**
  * `validateContentTypeData()` is a {@link DataValidator}. Use it to

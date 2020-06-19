@@ -35,5 +35,6 @@ export * from "./MediaTypeParts";
 export * from "./isMediaTypeData";
 export * from "./makeMediaType";
 export * from "./mustBeMediaTypeData";
+export * from "./parseMediaTypeData";
 export * from "./validateMediaTypeData";
 export * from "./regexes";

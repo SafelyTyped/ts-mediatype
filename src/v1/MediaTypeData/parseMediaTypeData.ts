@@ -42,15 +42,14 @@ import {
 } from "@safelytyped/core-types";
 
 import { InvalidMediaTypeDataError, MediaTypeMatchRegexIsBrokenError } from "../Errors";
-import { MediaTypeParts } from "./MediaTypeParts";
+import { MediaTypeParts } from "../MediaType/MediaTypeParts";
 import { MediaTypeMatchRegex, MediaTypeParamRegex } from "./regexes";
 
 /**
- * Data parser. Breaks down an RFC-compliant MediaType into its
- * individual parts.
+ * `parseMediaTypeData()` is a data parser. It breaks down an RFC-compliant
+ * media type into its individual parts.
  *
- * Everything except parameter values are run through the `caseConverter`
- * function.
+ * @category MediaTypeData
  */
 export function parseMediaTypeData(
     input: string,

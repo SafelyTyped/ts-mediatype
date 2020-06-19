@@ -30,7 +30,33 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./MediaType";
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
-export * from "./makeMediaType";
+import {
+    DataPath,
+    DEFAULT_DATA_PATH,
+    mustBe,
+    OnError,
+    THROW_THE_ERROR,
+} from "@safelytyped/core-types";
+
+import { validateMediaTypeData } from "./validateMediaTypeData";
+
+/**
+ * `mustBeMediaTypeData()` is a type guarantee. It calls the supplied
+ * {@link OnError} handler if the input value can't be used to create
+ * {@link MediaType}.
+ *
+ * @category MediaTypeData
+ */
+export const mustBeMediaTypeData = (
+    input: string,
+    {
+        onError = THROW_THE_ERROR,
+        path = DEFAULT_DATA_PATH,
+    }: {
+        onError?: OnError,
+        path?: DataPath,
+    } = {},
+): string =>
+    mustBe(input, { onError })
+        .next((x) => validateMediaTypeData(path, x))
+        .value();

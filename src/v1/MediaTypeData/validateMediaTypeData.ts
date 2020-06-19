@@ -48,7 +48,7 @@ import { MediaTypeMatchRegex } from "./regexes";
  * - `input` if validation succeeds, or
  * - an `AppError` explaining why validation failed
  *
- * @category MediaType
+ * @category MediaTypeData
  */
 export function validateMediaTypeData (
     path: DataPath,

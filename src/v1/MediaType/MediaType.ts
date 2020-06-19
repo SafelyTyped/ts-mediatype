@@ -36,7 +36,7 @@ import {
     THROW_THE_ERROR
 } from "@safelytyped/core-types";
 
-import { mustBeMediaTypeData } from "./mustBeMediaTypeData";
+import { mustBeMediaTypeData } from "../MediaTypeData";
 
 /**
  * `MediaType` is a safe type.

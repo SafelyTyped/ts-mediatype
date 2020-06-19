@@ -31,6 +31,4 @@
 //
 
 export * from "./MediaType";
-export * from "./MediaTypeParts";
-export * from "./MediaTypeParameters";
 export * from "./makeMediaType";

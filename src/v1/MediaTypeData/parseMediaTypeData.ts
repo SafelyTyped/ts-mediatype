@@ -42,7 +42,7 @@ import {
 } from "@safelytyped/core-types";
 
 import { InvalidMediaTypeDataError, MediaTypeMatchRegexIsBrokenError } from "../Errors";
-import { MediaTypeParts } from "../MediaType/MediaTypeParts";
+import { MediaTypeParts } from "../MediaTypeParts";
 import { MediaTypeMatchRegex, MediaTypeParamRegex } from "./regexes";
 
 /**

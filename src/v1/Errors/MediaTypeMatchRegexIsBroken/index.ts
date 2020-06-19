@@ -30,7 +30,5 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./defaults/MODULE_NAME";
-export * from "./InvalidMediaType";
-export * from "./InvalidContentType";
-export * from "./MediaTypeMatchRegexIsBroken";
+export * from "./MediaTypeMatchRegexIsBrokenData";
+export * from "./MediaTypeMatchRegexIsBrokenError";

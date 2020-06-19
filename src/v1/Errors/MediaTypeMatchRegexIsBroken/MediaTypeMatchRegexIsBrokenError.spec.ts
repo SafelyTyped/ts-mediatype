@@ -29,8 +29,17 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { expect } from "chai";
+import { describe } from "mocha";
 
-export * from "./defaults/MODULE_NAME";
-export * from "./InvalidMediaType";
-export * from "./InvalidContentType";
-export * from "./MediaTypeMatchRegexIsBroken";
+import { MediaTypeMatchRegexIsBrokenError } from "./MediaTypeMatchRegexIsBrokenError";
+
+describe("MediaTypeMatchRegexIsBrokenError", () => {
+    describe(".constructor()", () => {
+        it("creates a Javascript error", () => {
+            const unit = new MediaTypeMatchRegexIsBrokenError();
+
+            expect(unit).to.be.instanceOf(Error);
+        });
+    });
+});

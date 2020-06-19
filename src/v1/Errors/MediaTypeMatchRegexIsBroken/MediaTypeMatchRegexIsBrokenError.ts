@@ -30,7 +30,32 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./defaults/MODULE_NAME";
-export * from "./InvalidMediaType";
-export * from "./InvalidContentType";
-export * from "./MediaTypeMatchRegexIsBroken";
+import {
+    AppError,
+    AppErrorData,
+    makeHttpStatusCode,
+    makeStructuredProblemReport
+} from "@safelytyped/core-types";
+
+import { MODULE_NAME } from "../defaults/MODULE_NAME";
+import { MediaTypeMatchRegexIsBrokenData } from "./MediaTypeMatchRegexIsBrokenData";
+
+/**
+ * `MediaTypeMatchRegexIsBrokenError` is thrown whenever we're given an
+ * invalid value to {@link makeContentType}.
+ *
+ * @category Errors
+ */
+export class MediaTypeMatchRegexIsBrokenError extends AppError<MediaTypeMatchRegexIsBrokenData> {
+    public constructor(params: AppErrorData = {}) {
+        const spr = makeStructuredProblemReport<MediaTypeMatchRegexIsBrokenData>({
+            definedBy: MODULE_NAME,
+            description: "the MediaTypeMatchRegex no longer returns the expected named groups",
+            errorId: params.errorId,
+            extra: undefined,
+            status: makeHttpStatusCode(500),
+        });
+
+        super(spr);
+    }
+}

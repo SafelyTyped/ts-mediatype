@@ -29,8 +29,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+import { NoExtraData } from "@safelytyped/core-types";
 
-export * from "./defaults/MODULE_NAME";
-export * from "./InvalidMediaType";
-export * from "./InvalidContentType";
-export * from "./MediaTypeMatchRegexIsBroken";
+/**
+ * `MediaTypeMatchRegexIsBrokenData` defines the data that every
+ * {@link MediaTypeMatchRegexIsBrokenError} requires.
+ *
+ * @category Errors
+ */
+export type MediaTypeMatchRegexIsBrokenData = NoExtraData;

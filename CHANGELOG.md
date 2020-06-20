@@ -21,26 +21,40 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
-### Backwards-Compatibility Breaks
+## v0.1.0
+
+Released Saturday, 20th June 2020.
 
 ### New
 
-### Fixes
-
-### Dependencies
-
-### Tools
-
-## v0.0.1
-
-Released Monday, 1st January 2020.
-
-### Backwards-Compatibility Breaks
-
-### New
-
-### Fixes
-
-### Dependencies
-
-### Tools
+* ContentType
+  - added isContentTypeData()
+  - added makeContentType()
+  - added mustBeContentTypeData()
+  - added validateContentTypeData()
+* Errors
+  - added MediaTypeRegexIsBrokenError
+* MediaType
+  - added MediaType()
+  - added makeMediaType()
+  - added MakeMediaTypeOptions
+  - added MAKE_MEDIA_TYPE_DEFAULT_OPTIONS
+  - added MAKE_MEDIA_TYPE_DEFAULT_FN_OPTS
+* MediaTypeData
+  - added isMediaTypeData()
+  - added makeMediaTypeDataFromMediaTypeParts()
+  - added mustBeMediaTypeData()
+  - added parseMediaTypeData()
+  - added validateMediaTypeData()
+* MediaTypeParts
+  - added MediaTypeParts
+  - added MediaTypeParameters
+  - added FormatMediaTypePartsRuleset
+  - added formatMediaTypeParts()
+  - added MediaTypePartsToLowerCase ruleset
+  - added MediaTypePartsToUpperCase ruleset
+  - added normaliseMediaTypeParts()
+* OptionTypes
+  - added ContentTypeOrMediaType
+  - added resolveToContentType()
+  - added resolveToMediaType()

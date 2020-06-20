@@ -1,6 +1,6 @@
 {
   "name": "@safelytyped/mediatype",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "TypeScript support for RFC-2045 / RFC-6838 MediaTypes",
   "repository": "github:SafelyTyped/ts-mediatype",
   "main": "lib/v1/index.js",

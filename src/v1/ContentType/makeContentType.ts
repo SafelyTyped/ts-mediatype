@@ -36,6 +36,8 @@ import {
     OnErrorOptions,
     SmartConstructor,
     THROW_THE_ERROR,
+    DEFAULT_DATA_PATH,
+    TypeGuaranteeOptions,
 } from "@safelytyped/core-types";
 
 import { mustBeContentTypeData } from "./mustBeContentTypeData";
@@ -55,9 +57,12 @@ import { ContentType } from "./ContentType";
  */
 export const makeContentType: SmartConstructor<string, ContentType, OnErrorOptions, string | ContentType> = (
     input: string,
-    { onError = THROW_THE_ERROR }: Partial<OnErrorOptions> = {},
+    {
+        path = DEFAULT_DATA_PATH,
+        onError = THROW_THE_ERROR
+    }: Partial<TypeGuaranteeOptions> = {},
     ...fnOpts: FunctionalOption<string | ContentType, OnErrorOptions>[]
-): ContentType => makeNominalType<string, ContentType, OnErrorOptions>(
+): ContentType => makeNominalType<string, ContentType, TypeGuaranteeOptions>(
     mustBeContentTypeData,
     input,
     { onError },

@@ -1,10 +1,11 @@
 {
   "name": "@safelytyped/mediatype",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "TypeScript support for RFC-2045 / RFC-6838 MediaTypes",
   "repository": "github:SafelyTyped/ts-mediatype",
-  "main": "lib/v1/index.js",
-  "types": "lib/v1/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc -b ./tsconfig-cjs.json ./tsconfig-esm.json ./tsconfig-types.json",
     "lint": "npx eslint .",
